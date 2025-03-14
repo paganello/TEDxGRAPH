@@ -57,7 +57,7 @@ Creazione di un applicazione/WebApp interattiva in Flutter, che permetta l'esplo
 
 ## **Esempio di Esperienza Utente**
 
-1. **Apri l'App**: VAl seguito di una ricerca viene mostrata una mappa mentale con un nodo centrale (ad esempio, un talk su "Intelligenza Artificiale").
+1. **Apri l'App**: A seguito di una ricerca eseguita dall'utente, viene mostrata una mappa mentale con un nodo centrale (ad esempio, un talk su "Intelligenza Artificiale").
 
 2. **Esplora**: Cliccando sul nodo, si espandono nodi secondari:
      - Parole chiave: "Machine Learning", "Etica", "Futuro".
@@ -65,14 +65,13 @@ Creazione di un applicazione/WebApp interattiva in Flutter, che permetta l'esplo
      - Talk affini: "Come l'AI sta cambiando il mondo", "Il futuro del lavoro".
 
 3. **Scopri**:
-   - L'utente clicca su "Etica" e trova un talk su "L'etica dell'AI" di un altro speaker.
-   - La mappa si espande ulteriormente, rivelando nuove connessioni.
+   L'utente clicca su "Etica" e trova un talk su "L'etica dell'AI" di un altro speaker. La mappa si espande ulteriormente, rivelando nuove connessioni.
 
 4. **Chiedi all'AI**:
-   L'utente chiede all'assistente AI *"Riassumi questo talk in 3 frasi"* e ottiene un nodo, comprendente i 3 nodi che compongono le 3 frasi, ma che se cliccati espandono verso nuovi nodi.
+   L'utente chiede all'assistente AI *"Riassumi questo talk in 3 frasi"* e ottiene un nodo, comprendente i nodi che compongono le 3 frasi, ma che se cliccati espandono verso nuovi nodi.
 
 5. **Salva e Condividi**:
-   - L'utente salva la mappa come "Viaggio nell'Intelligenza Artificiale" e la condivide con un amico.
+   L'utente salva la mappa come "Viaggio nell'Intelligenza Artificiale" e la condivide con un amico.
 
 
 
