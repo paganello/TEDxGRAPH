@@ -10,7 +10,7 @@
 
 &nbsp;
 ## 🎯 **Obiettivi del progetto**
-Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'esplorazione e l'approfondimento di tematiche già trattate nei talk di **TEDx**, utilizzando un metodo rappresentativo a grafo per un apprendimento più schematico ed innovativo. Ogni talk viene visualizzato come un nodo di una mappa, con collegamenti ad argomenti correlati (sotto forma di altri grafi o sottogravi), permettendo agli utenti di esplorare i talk in modo non lineare, seguendo i propri interessi e scoprendo connessioni inaspettate tra idee e speaker.
+Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'esplorazione e l'approfondimento di tematiche già trattate nei talk di **TEDx**, utilizzando un metodo rappresentativo a grafo per un apprendimento più schematico ed innovativo. Ogni talk viene visualizzato come un nodo di una mappa, con collegamenti ad argomenti correlati (sotto forma di altri grafi o sottografi), permettendo agli utenti di esplorare i talk in modo non lineare, seguendo i propri interessi e scoprendo connessioni inaspettate tra idee e speaker.
 
 &nbsp;
 ## 🛠️ **Funzionalità Principali**
@@ -33,8 +33,8 @@ Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'e
 ### 🤖 **Generazione Automatica di Riassunti con AI**
 - Utilizzo di **Amazon Bedrock** o **Amazon Comprehend** per generare **riassunti** e **collegamenti** che alimentano la mappa mentale.
 
-### 💬 **Assistente AI Conversazionale**
-- Gli utenti possono interagire con un assistente AI, ad esempio:
+### 💬 **Ricerca con NLP**
+- Elaborazione del linguaggio naturale (NLP) mediante il servizio **Comprehend**, ad esempio:
   *"Quali talk mi consigli su AI e impatto sociale?"*
   L'AI mostrerà i **nodi pertinenti** e creerà nuovi **link** verso articoli o risorse esterne che trattano temi correlati.
 
@@ -90,8 +90,8 @@ Cliccando sul nodo, si espandono nodi secondari:
 ### 3. **Scopri**
 L'utente clicca su **"Etica"** e trova un talk su **"L'etica dell'AI"** di un altro speaker. La mappa si espande ulteriormente, rivelando nuove connessioni.
 
-### 4. **Chiedi all'AI**
-L'utente chiede all'assistente AI *"Riassumi questo talk in 3 frasi"* e ottiene un **nodo**, comprendente i nodi che compongono le 3 frasi, ma che se cliccati espandono verso nuovi nodi.
+### 4. **Cerca**
+L'utente ricerca utilizzando un linguaggio naturale che viene analizzato per ottienere un **nodo** che se cliccato espande verso nuovi nodi.
 
 ### 5. **Salva e Condividi**
 L'utente salva la mappa come "**Viaggio nell'Intelligenza Artificiale**" e la condivide con un amico.
