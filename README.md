@@ -27,7 +27,7 @@ Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'e
 
 ### 🔍 **Trascrizioni Complete + Ricerca nei Testi**
 - **AWS Transcribe** per ottenere **trascrizioni accurate** dei talk.
-- **Amazon Kendra** per una **ricerca semantica intelligente** all'interno dei contenuti trascritti.
+- **Amazon OpenSearch** per una **ricerca semantica** all'interno dei contenuti trascritti.
 - Gli utenti possono cercare **frasi specifiche** pronunciate dai speaker.
 
 ### 🤖 **Generazione Automatica di Riassunti con AI**
@@ -69,7 +69,7 @@ Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'e
 5. **AWS Transcribe**:
    - Per ottenere **trascrizioni accurate** dei talk TEDx.
 
-6. **Amazon Kendra**:
+6. **Amazon OpenSearch Service**:
    - Per abilitare la **ricerca semantica** nei contenuti trascritti.
 
 7. **Amazon Bedrock**:
