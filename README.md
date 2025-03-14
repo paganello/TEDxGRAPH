@@ -1,7 +1,7 @@
 # TEDxGRAPH – Mappe Mentali Interattive dei Talk TEDx
 
 ## Obbiettivi del progetto
-Creazione di un applicazione/WebApp interattiva in Flutter, che permetta l'esplorazione e l'approfondimento di tematiche gia trattate nei talk di TEDx, utilizzando un medoto rappresentativo a grafo per un apprendimendo piu schematico ed innovativo. Ogni talk viene visualizzato come un nodo di una mappa, con collegamenti ad argomenti correlati (sotto forma di altri grafi o sottogravi), permettendo agli utenti di esplorare i talk in modo non lineare, seguendo i propri interessi e scoprendo connessioni inaspettate tra idee e speaker.
+Creazione di un applicazione/WebApp interattiva in Flutter, che permetta l'esplorazione e l'approfondimento di tematiche gia trattate nei talk di TEDx, utilizzando un metodo rappresentativo a grafo per un apprendimendo piu schematico ed innovativo. Ogni talk viene visualizzato come un nodo di una mappa, con collegamenti ad argomenti correlati (sotto forma di altri grafi o sottogravi), permettendo agli utenti di esplorare i talk in modo non lineare, seguendo i propri interessi e scoprendo connessioni inaspettate tra idee e speaker.
 
 ## Funzionalità Principali
 
@@ -19,7 +19,7 @@ Creazione di un applicazione/WebApp interattiva in Flutter, che permetta l'esplo
 3. **Generazione Automatica di Riassunti con AI**:
    Utilizza *Amazon Bedrock* o *Amazon Comprehend* per creare i riassunti e gli approfondimenti/collegamenti che comporranno i nodi della rete.
 
-5. **Assistente AI Conversazionale**:
+4. **Assistente AI Conversazionale**:
    L'utente può chiedere ad esempio *"Quali talk mi consigli su AI e impatto sociale?"*, il software mostrera' cosi i nodi pertinenti e creara' grazie all'uso dell'AI nuovi link verso siti web che trattano in modo     piu dettagliato alcuni argomenti citati nei talks.
 
 ### Ulteriori spunti 
@@ -50,8 +50,8 @@ Creazione di un applicazione/WebApp interattiva in Flutter, che permetta l'esplo
 6. **Amazon Kendra**:
    - Per abilitare la ricerca semantica nei contenuti trascritti.
 
-7. **Amazon Bedrock + Lex**:
-   - Per generare riassunti con AI e implementare un chatbot assistente.
+7. **Amazon Bedrock**:
+   - Per generare riassunti con AI.
 
 ---
 
