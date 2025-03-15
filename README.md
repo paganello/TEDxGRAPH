@@ -2,11 +2,17 @@
 **Titolo del Progetto:** WebApp interattiva in Flutter per l'esplorazione e l'approfondimento dei talk TEDx tramite mappe mentali con AI e trascrizioni integrate.
 
 ## 📌 **Indice**
-1. [Obiettivi del Progetto](#-obiettivi-del-progetto)
-2. [Funzionalità Principali](#️-funzionalità-principali)
-3. [Tecnologie AWS Utilizzate](#️-tecnologie-aws-utilizzate)
-4. [Esempio di Esperienza Utente](#-esempio-di-esperienza-utente)
-5. [Ulteriori Spunti](#-ulteriori-spunti)
+1. [🎯 Obiettivi del Progetto](#-obiettivi-del-progetto)  
+2. [🛠️ Funzionalità Principali](#-funzionalità-principali)  
+   - [🧠 Mappe Mentali Interattive](#-mappe-mentali-interattive)  
+   - [🔍 Trascrizioni Complete + Ricerca nei Testi](#-trascrizioni-complete-ricerca-nei-testi)  
+   - [🤖 Generazione Automatica di Riassunti con AI](#-generazione-automatica-di-riassunti-con-ai)  
+   - [💬 Ricerca con NLP](#-ricerca-con-nlp)  
+3. [✨ Ulteriori Spunti](#-ulteriori-spunti)  
+   - [🎥 Integrazione con Video](#-integrazione-con-video)  
+   - [🏆 Gamification & Progressione dell’Utente](#-gamification-progressione-dellutente)  
+4. [⚙️ Tecnologie AWS Utilizzate](#️-tecnologie-aws-utilizzate)  
+5. [🌟 Esempio di Esperienza Utente](#-esempio-di-esperienza-utente)  
 
 &nbsp;
 ## 🎯 **Obiettivi del progetto**
