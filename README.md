@@ -2,11 +2,11 @@
 **Titolo del Progetto:** WebApp interattiva in Flutter per l'esplorazione e l'approfondimento dei talk TEDx tramite mappe mentali con AI e trascrizioni integrate.
 
 ## 📌 **Indice**
-1. [Obiettivi del Progetto](#obbiettivi-del-progetto)
-2. [Funzionalità Principali](#funzionalità-principali)
-3. [Tecnologie AWS Utilizzate](#tecnologie-aws-utilizzate)
-4. [Esempio di Esperienza Utente](#esempio-di-esperienza-utente)
-5. [Ulteriori Spunti](#ulteriori-spunti)
+1. [Obiettivi del Progetto](#-obiettivi-del-progetto)
+2. [Funzionalità Principali](#️-funzionalità-principali)
+3. [Tecnologie AWS Utilizzate](#️-tecnologie-aws-utilizzate)
+4. [Esempio di Esperienza Utente](#-esempio-di-esperienza-utente)
+5. [Ulteriori Spunti](#-ulteriori-spunti)
 
 &nbsp;
 ## 🎯 **Obiettivi del progetto**
@@ -57,8 +57,8 @@ Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'e
 1. **Amazon Comprehend**:
    - Per estrarre **parole chiave**, **argomenti** e **sentiment** dai titoli, dalle descrizioni e dalle trascrizioni complete dei talk.
 
-2. **Amazon Neptune**:
-   - Un **database di grafi** per memorizzare e gestire le relazioni tra talk, speaker, parole chiave e argomenti.
+2. **Neo4j AuraDB**:
+   - Un **database a grafo** per memorizzare e gestire le relazioni tra talk, speaker, parole chiave e argomenti.
 
 3. **Amazon S3**:
    - Per archiviare i **file CSV** e i metadati dei talk.
@@ -91,7 +91,7 @@ Cliccando sul nodo, si espandono nodi secondari:
 L'utente clicca su **"Etica"** e trova un talk su **"L'etica dell'AI"** di un altro speaker. La mappa si espande ulteriormente, rivelando nuove connessioni.
 
 ### 4. **Cerca**
-L'utente ricerca utilizzando un linguaggio naturale che viene analizzato per ottienere un **nodo** che se cliccato espande verso nuovi nodi.
+L'utente ricerca utilizzando un linguaggio naturale che viene analizzato per ottenere un **nodo** che se cliccato espande verso nuovi nodi.
 
 ### 5. **Salva e Condividi**
 L'utente salva la mappa come "**Viaggio nell'Intelligenza Artificiale**" e la condivide con un amico.
