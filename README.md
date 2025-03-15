@@ -3,14 +3,14 @@
 
 ## 📌 **Indice**
 1. [🎯 Obiettivi del Progetto](#-obiettivi-del-progetto)  
-2. [🛠️ Funzionalità Principali](#-funzionalità-principali)  
+2. [🛠️ Funzionalità Principali](#️-funzionalità-principali)  
    - [🧠 Mappe Mentali Interattive](#-mappe-mentali-interattive)  
-   - [🔍 Trascrizioni Complete + Ricerca nei Testi](#-trascrizioni-complete-ricerca-nei-testi)  
+   - [🔍 Trascrizioni Complete + Ricerca nei Testi](#-trascrizioni-complete--ricerca-nei-testi)  
    - [🤖 Generazione Automatica di Riassunti con AI](#-generazione-automatica-di-riassunti-con-ai)  
    - [💬 Ricerca con NLP](#-ricerca-con-nlp)  
 3. [✨ Ulteriori Spunti](#-ulteriori-spunti)  
    - [🎥 Integrazione con Video](#-integrazione-con-video)  
-   - [🏆 Gamification & Progressione dell’Utente](#-gamification-progressione-dellutente)  
+   - [🏆 Gamification & Progressione dell’Utente](#-gamification--progressione-dellutente)  
 4. [⚙️ Tecnologie AWS Utilizzate](#️-tecnologie-aws-utilizzate)  
 5. [🌟 Esempio di Esperienza Utente](#-esempio-di-esperienza-utente)  
 
