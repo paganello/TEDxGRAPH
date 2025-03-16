@@ -37,7 +37,7 @@ Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'e
 - Gli utenti possono cercare **frasi specifiche** pronunciate dai speaker.
 
 ### 🤖 **Generazione Automatica di Riassunti con AI**
-- Utilizzo di **Amazon Bedrock** o **Amazon Comprehend** per generare **riassunti** e **collegamenti** che alimentano la mappa mentale.
+- Utilizzo di **OpenAI API** o **Amazon Comprehend** per generare **riassunti** e **collegamenti** che alimentano la mappa mentale.
 
 ### 💬 **Ricerca con NLP**
 - Elaborazione del linguaggio naturale (NLP) mediante il servizio **Comprehend**, ad esempio:
@@ -78,7 +78,7 @@ Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'e
 6. **Amazon OpenSearch Service**:
    - Per abilitare la **ricerca semantica** nei contenuti trascritti.
 
-7. **Amazon Bedrock**:
+7. **OpenAI API**:
    - Per generare **riassunti** con **AI**.
 
 &nbsp;
