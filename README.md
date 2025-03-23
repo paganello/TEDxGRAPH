@@ -64,7 +64,9 @@ Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'e
    - Per estrarre **parole chiave**, **argomenti** e **sentiment** dai titoli, dalle descrizioni e dalle trascrizioni complete dei talk.
 
 2. **Neo4j AuraDB**:
-   - Un **database a grafo** per memorizzare e gestire le relazioni tra talk, speaker, parole chiave e argomenti.
+   - Un **database a grafo** per memorizzare e gestire le relazioni tra talk, speaker, parole chiave e argomenti. Ecco come i dati sono strutturati all'interno del database a grafo:
+     
+     ![Graph_DB](https://github.com/user-attachments/assets/998295c9-bc34-409b-b7c3-1ed437510a2f)
 
 3. **Amazon S3**:
    - Per archiviare i **file CSV** e i metadati dei talk.
@@ -101,3 +103,9 @@ L'utente ricerca utilizzando un linguaggio naturale che viene analizzato per ott
 
 ### 5. **Salva e Condividi**
 L'utente salva la mappa come "**Viaggio nell'Intelligenza Artificiale**" e la condivide con un amico.
+
+Ecco un'anteprima dell'interfaccia utente che permette di esplorare i talk TEDx con le mappe mentali:
+
+![mockup-1](https://github.com/user-attachments/assets/ae4d7143-3982-42db-a312-fdef86726680)
+
+![mockup-2](https://github.com/user-attachments/assets/317d61db-731b-4eb4-bb99-738de6ff2c17)
