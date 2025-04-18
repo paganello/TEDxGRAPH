@@ -39,13 +39,12 @@ tedx_dataset.printSchema()
 
 #### FILTER ITEMS WITH NULL POSTING KEY
 count_items = tedx_dataset.count()
-# Ensure 'id' column exists before filtering
 if 'id' in tedx_dataset.columns:
     count_items_null = tedx_dataset.filter(col("id").isNotNull()).count()
     print(f"Number of items from RAW DATA {count_items}")
     print(f"Number of items from RAW DATA with NOT NULL KEY {count_items_null}")
-    # Filter out rows with null id early if needed, though joins will handle this
-    tedx_dataset = tedx_dataset.filter(col("id").isNotNull())
+    tedx_dataset = tedx_dataset.filter(col("id").isNotNull()) #check if id is not null
+
 else:
     print("Warning: 'id' column not found in tedx_dataset. Skipping null key check.")
     print(f"Number of items from RAW DATA {count_items}")
@@ -59,25 +58,16 @@ details_dataset = spark.read \
     .option("escape", "\"") \
     .csv(details_dataset_path)
 
-# Check if 'id' exists in details_dataset before aliasing
-if 'id' in details_dataset.columns:
-    details_dataset = details_dataset.select(col("id").alias("id_ref"),
+details_dataset = details_dataset.select(col("id").alias("id_ref"),
                                              col("description"),
                                              col("duration"),
                                              col("publishedAt"))
 
-    # AND JOIN WITH THE MAIN TABLE
-    # Ensure 'id' exists in tedx_dataset before joining
-    if 'id' in tedx_dataset.columns:
-        tedx_dataset_main = tedx_dataset.join(details_dataset, tedx_dataset["id"] == details_dataset["id_ref"], "left") \
+# AND JOIN WITH THE MAIN TABLE
+tedx_dataset_main = tedx_dataset.join(details_dataset, tedx_dataset["id"] == details_dataset["id_ref"], "left") \
             .drop("id_ref")
-        tedx_dataset_main.printSchema()
-    else:
-        print("Error: 'id' column missing in tedx_dataset for joining details. Exiting.")
-        sys.exit(1) # Or handle error appropriately
-else:
-    print("Warning: 'id' column not found in details_dataset. Skipping details join.")
-    tedx_dataset_main = tedx_dataset # Proceed without details if id is missing
+
+tedx_dataset_main.printSchema()
 
 
 ## READ TAGS DATASET
@@ -105,7 +95,6 @@ if 'id' in tags_dataset.columns and 'tag' in tags_dataset.columns:
         if 'tags' in tedx_dataset_agg.columns:
             # Handle talks that might not have tags (due to left join earlier)
             tedx_dataset_agg = tedx_dataset_agg.withColumn("tags", coalesce(col("tags"), array().cast("array<string>")))
-
             exploded_tags = tedx_dataset_agg.select("_id", explode("tags").alias("tag"))
 
             # 2. Self-join on tag to find talks with common tags
