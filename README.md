@@ -2,11 +2,17 @@
 **Titolo del Progetto:** WebApp interattiva in Flutter per l'esplorazione e l'approfondimento dei talk TEDx tramite mappe mentali con AI e trascrizioni integrate.
 
 ## 📌 **Indice**
-1. [Obiettivi del Progetto](#obbiettivi-del-progetto)
-2. [Funzionalità Principali](#funzionalità-principali)
-3. [Tecnologie AWS Utilizzate](#tecnologie-aws-utilizzate)
-4. [Esempio di Esperienza Utente](#esempio-di-esperienza-utente)
-5. [Ulteriori Spunti](#ulteriori-spunti)
+1. [🎯 Obiettivi del Progetto](#-obiettivi-del-progetto)  
+2. [🛠️ Funzionalità Principali](#️-funzionalità-principali)  
+   - [🧠 Mappe Mentali Interattive](#-mappe-mentali-interattive)  
+   - [🔍 Trascrizioni Complete + Ricerca nei Testi](#-trascrizioni-complete--ricerca-nei-testi)  
+   - [🤖 Generazione Automatica di Riassunti con AI](#-generazione-automatica-di-riassunti-con-ai)  
+   - [💬 Ricerca con NLP](#-ricerca-con-nlp)  
+3. [✨ Ulteriori Spunti](#-ulteriori-spunti)  
+   - [🎥 Integrazione con Video](#-integrazione-con-video)  
+   - [🏆 Gamification & Progressione dell’Utente](#-gamification--progressione-dellutente)  
+4. [⚙️ Tecnologie AWS Utilizzate](#️-tecnologie-aws-utilizzate)  
+5. [🌟 Esempio di Esperienza Utente](#-esempio-di-esperienza-utente)  
 
 &nbsp;
 ## 🎯 **Obiettivi del progetto**
@@ -31,7 +37,7 @@ Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'e
 - Gli utenti possono cercare **frasi specifiche** pronunciate dai speaker.
 
 ### 🤖 **Generazione Automatica di Riassunti con AI**
-- Utilizzo di **Amazon Bedrock** o **Amazon Comprehend** per generare **riassunti** e **collegamenti** che alimentano la mappa mentale.
+- Utilizzo di **OpenAI API** o **Amazon Comprehend** per generare **riassunti** e **collegamenti** che alimentano la mappa mentale.
 
 ### 💬 **Ricerca con NLP**
 - Elaborazione del linguaggio naturale (NLP) mediante il servizio **Comprehend**, ad esempio:
@@ -57,8 +63,10 @@ Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'e
 1. **Amazon Comprehend**:
    - Per estrarre **parole chiave**, **argomenti** e **sentiment** dai titoli, dalle descrizioni e dalle trascrizioni complete dei talk.
 
-2. **Amazon Neptune**:
-   - Un **database di grafi** per memorizzare e gestire le relazioni tra talk, speaker, parole chiave e argomenti.
+2. **Neo4j AuraDB**:
+   - Un **database a grafo** per memorizzare e gestire le relazioni tra talk, speaker, parole chiave e argomenti. Ecco come i dati sono strutturati all'interno del database a grafo:
+     
+     ![Graph_DB](https://github.com/user-attachments/assets/998295c9-bc34-409b-b7c3-1ed437510a2f)
 
 3. **Amazon S3**:
    - Per archiviare i **file CSV** e i metadati dei talk.
@@ -72,7 +80,7 @@ Creazione di un'applicazione/WebApp interattiva in **Flutter**, che permetta l'e
 6. **Amazon OpenSearch Service**:
    - Per abilitare la **ricerca semantica** nei contenuti trascritti.
 
-7. **Amazon Bedrock**:
+7. **OpenAI API**:
    - Per generare **riassunti** con **AI**.
 
 &nbsp;
@@ -91,7 +99,13 @@ Cliccando sul nodo, si espandono nodi secondari:
 L'utente clicca su **"Etica"** e trova un talk su **"L'etica dell'AI"** di un altro speaker. La mappa si espande ulteriormente, rivelando nuove connessioni.
 
 ### 4. **Cerca**
-L'utente ricerca utilizzando un linguaggio naturale che viene analizzato per ottienere un **nodo** che se cliccato espande verso nuovi nodi.
+L'utente ricerca utilizzando un linguaggio naturale che viene analizzato per ottenere un **nodo** che se cliccato espande verso nuovi nodi.
 
 ### 5. **Salva e Condividi**
 L'utente salva la mappa come "**Viaggio nell'Intelligenza Artificiale**" e la condivide con un amico.
+
+Ecco un'anteprima dell'interfaccia utente che permette di esplorare i talk TEDx con le mappe mentali:
+
+![mockup-1](https://github.com/user-attachments/assets/ae4d7143-3982-42db-a312-fdef86726680)
+
+![mockup-2](https://github.com/user-attachments/assets/317d61db-731b-4eb4-bb99-738de6ff2c17)
