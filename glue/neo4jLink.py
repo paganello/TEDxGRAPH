@@ -8,20 +8,23 @@ from urllib.parse import quote_plus
 import traceback # Import per stack trace
 
 # --- Configuration from Environment Variables ---
-# !!! LE CREDENZIALI SONO HARDCODED COME RICHIESTO - NON RACCOMANDATO PER PRODUZIONE !!!
-MONGO_DB_NAME = "unibg_tedx_2025"
-MONGO_COLLECTION_NAME = "tedx_data"
-MONGO_USER = "poldo"
-MONGO_PASSWORD = "*@78t@%2%^#8nZC6p$3Z"
-MONGO_HOST = "cluster0.izou0.mongodb.net"
+# CREDENZIALI DA AGGIUNGERE A MANO
+# Queste variabili devono essere impostate nell'ambiente di esecuzione del job Glue
+# Puoi usare AWS Glue Job Parameters o AWS Secrets Manager per gestire le credenziali in modo sicuro
+MONGO_USER = os.environ.get('MONGO_USER')
+MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD')
+MONGO_HOST = os.environ.get('MONGO_HOST')
+MONGO_DB_NAME = os.environ.get('MONGO_DB_NAME')
+MONGO_COLLECTION_NAME = os.environ.get('MONGO_COLLECTION_NAME')
 
-NEO4J_URI = "neo4j+s://05a32e55.databases.neo4j.io"
-NEO4J_USER = "neo4j"
-NEO4J_PASSWORD = "DrwcO69OFVN2olZl9VsPRT_f8r_oGyl3TXVZvUkGgoQ"
+NEO4J_URI = os.environ.get('NEO4J_URI')
+NEO4J_USER = os.environ.get('NEO4J_USER')
+NEO4J_PASSWORD = os.environ.get('NEO4J_PASSWORD')
+
 
 # --- Basic Validation ---
 # Aggiungi i nuovi campi Mongo alla validazione
-if not all([MONGO_USER, MONGO_PASSWORD, MONO_HOST, MONGO_DB_NAME, MONGO_COLLECTION_NAME,
+if not all([MONGO_USER, MONGO_PASSWORD, MONGO_HOST, MONGO_DB_NAME, MONGO_COLLECTION_NAME,
             NEO4J_URI, NEO4J_USER, NEO4J_PASSWORD]):
     print("Error: Missing one or more configuration variables (MONGO_*, NEO4J_*)")
     # In Glue, esci con un codice di errore per segnalare il fallimento del job
