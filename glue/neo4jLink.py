@@ -11,16 +11,17 @@ import traceback # Import per stack trace
 # CREDENZIALI DA AGGIUNGERE A MANO
 # Queste variabili devono essere impostate nell'ambiente di esecuzione del job Glue
 # Puoi usare AWS Glue Job Parameters o AWS Secrets Manager per gestire le credenziali in modo sicuro
-MONGO_USER = os.environ.get('MONGO_USER')
-MONGO_PASSWORD = os.environ.get('MONGO_PASSWORD')
-MONGO_HOST = os.environ.get('MONGO_HOST')
-MONGO_DB_NAME = os.environ.get('MONGO_DB_NAME')
-MONGO_COLLECTION_NAME = os.environ.get('MONGO_COLLECTION_NAME')
 
-NEO4J_URI = os.environ.get('NEO4J_URI')
-NEO4J_USER = os.environ.get('NEO4J_USER')
-NEO4J_PASSWORD = os.environ.get('NEO4J_PASSWORD')
+# Credenziali da configurare tramite ambiente o secret manager
+MONGO_USER = "[inserire il proprio username MongoDB]"
+MONGO_PASSWORD = "[inserire la propria password MongoDB]"
+MONGO_HOST = "[inserire il proprio host MongoDB, es. cluster0.xxx.mongodb.net]"
+MONGO_DB_NAME = "[inserire il nome del database MongoDB, es. unibg_tedx_2025]"
+MONGO_COLLECTION_NAME = "[inserire il nome della collezione MongoDB, es. tedx_data]"
 
+NEO4J_URI = "[inserire l'URI Neo4j, es. neo4j+s://... ]"
+NEO4J_USER = "[inserire il proprio username Neo4j]"
+NEO4J_PASSWORD = "[inserire la propria password Neo4j]"
 
 # --- Basic Validation ---
 # Aggiungi i nuovi campi Mongo alla validazione
