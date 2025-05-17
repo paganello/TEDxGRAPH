@@ -110,7 +110,6 @@ def fetch_transcript_for_talk(talk_slug, language="it"): # Default alla lingua i
             # print(f"Empty transcript after processing for {talk_slug}, lang {language}.") # Debug
             return None
             
-        # SCEGLI COME VUOI UNIRE LE PARTI: con spazio o con a capo
         # full_transcript = " ".join(transcript_parts) # Trascrizione su una riga
         full_transcript = "\n".join(transcript_parts) # Trascrizione con a capo (come nei test)
         return full_transcript
