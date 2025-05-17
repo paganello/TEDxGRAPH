@@ -14,7 +14,7 @@ from awsglue.dynamicframe import DynamicFrame
 from awsglue.job import Job
 
 ##### FROM FILES
-tedx_dataset_path = "s3://tedx-2025-data-mp-provaprova/final_list.csv"
+tedx_dataset_path = "s3://tedx-2025-data-mp-provaprova/final_list.csv" 
 
 ###### READ PARAMETERS
 args = getResolvedOptions(sys.argv, ['JOB_NAME'])
@@ -31,7 +31,6 @@ GRAPHQL_URL = 'https://www.ted.com/graphql'
 COMMON_HEADERS = {
     'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:138.0) Gecko/20100101 Firefox/138.0',
     'Accept': '*/*',
-    # 'Accept-Language' verrà impostato dinamicamente nella funzione
     'client-id': 'Zenith production',
     'content-type': 'application/json',
     'Origin': 'https://www.ted.com',
@@ -53,7 +52,6 @@ query Transcript($id: ID!, $language: String!) {
 }
 """
 
-# Cambia la lingua di default a "en" ---
 def fetch_transcript_for_talk(talk_slug, language="en"): # Default alla lingua inglese
     if not talk_slug:
         return None
@@ -69,7 +67,6 @@ def fetch_transcript_for_talk(talk_slug, language="en"): # Default alla lingua i
     
     headers = COMMON_HEADERS.copy()
     headers['Referer'] = f'https://www.ted.com/talks/{talk_slug}/transcript?language={language}'
-    # Imposta Accept-Language per dare priorità all'inglese
     headers['Accept-Language'] = 'en-US,en;q=0.9'
 
 
@@ -113,9 +110,7 @@ def fetch_transcript_for_talk(talk_slug, language="en"): # Default alla lingua i
     except Exception:
         return None
 
-# Registra la funzione come UDF
 get_transcript_udf = udf(fetch_transcript_for_talk, StringType())
-
 # --- FINE NUOVA FUNZIONALITÀ: TRASCRIZIONE ---
 
 
@@ -126,24 +121,12 @@ tedx_dataset = spark.read \
     .option("escape", "\"") \
     .csv(tedx_dataset_path)
 
-# tedx_dataset.printSchema()
-
 if 'slug' in tedx_dataset.columns:
     print("Colonna 'slug' trovata. Recupero delle trascrizioni in INGLESE in corso...")
-    # La chiamata UDF userà automaticamente language="en" come da definizione della funzione ---
     tedx_dataset = tedx_dataset.withColumn("transcript", get_transcript_udf(col("slug")))
-    # Aggiungiamo la colonna transcript_language per chiarezza, sarà sempre "en" se la trascrizione è trovata
-    from pyspark.sql.functions import when
-    tedx_dataset = tedx_dataset.withColumn("transcript_language", 
-                                           when(col("transcript").isNotNull(), lit("en"))
-                                           .otherwise(lit(None).cast(StringType())))
 else:
     print("Errore: colonna 'slug' non trovata in tedx_dataset. Impossibile recuperare le trascrizioni.")
     tedx_dataset = tedx_dataset.withColumn("transcript", lit(None).cast(StringType()))
-    tedx_dataset = tedx_dataset.withColumn("transcript_language", lit(None).cast(StringType()))
-
-
-# tedx_dataset.printSchema()
 
 #### FILTER ITEMS WITH NULL POSTING KEY (colonna "id" numerico)
 count_items = tedx_dataset.count()
@@ -172,8 +155,6 @@ details_dataset = details_dataset.select(col("id").alias("id_ref"),
 
 tedx_dataset_main = tedx_dataset.join(details_dataset, tedx_dataset["id"] == details_dataset["id_ref"], "left") \
             .drop("id_ref")
-
-# tedx_dataset_main.printSchema()
 
 
 ## READ TAGS DATASET
@@ -267,7 +248,7 @@ else:
 if tedx_final_dataset is not None:
     if "slug" not in tedx_final_dataset.columns:
         print("Errore critico: colonna 'slug' mancante nel dataset finale.")
-        tedx_final_dataset = tedx_final_dataset.withColumn("slug", lit(None).cast(StringType())) # Aggiungi per evitare errori di schema
+        tedx_final_dataset = tedx_final_dataset.withColumn("slug", lit(None).cast(StringType())) 
     else:
          tedx_final_dataset = tedx_final_dataset.withColumn("slug", coalesce(col("slug"), lit(None).cast(StringType())))
 
@@ -277,11 +258,7 @@ if tedx_final_dataset is not None:
     else:
         tedx_final_dataset = tedx_final_dataset.withColumn("transcript", coalesce(col("transcript"), lit(None).cast(StringType())))
     
-    if "transcript_language" not in tedx_final_dataset.columns:
-        print("Attenzione: colonna 'transcript_language' mancante nel dataset finale. Aggiunta come colonna vuota.")
-        tedx_final_dataset = tedx_final_dataset.withColumn("transcript_language", lit(None).cast(StringType()))
-    else:
-        tedx_final_dataset = tedx_final_dataset.withColumn("transcript_language", coalesce(col("transcript_language"), lit(None).cast(StringType())))
+    # Rimosso il blocco per transcript_language
 
     if "tags" not in tedx_final_dataset.columns:
         tedx_final_dataset = tedx_final_dataset.withColumn("tags", array().cast(ArrayType(StringType())))
