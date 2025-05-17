@@ -2,7 +2,7 @@ import sys
 import json
 import requests
 
-from pyspark.sql.functions import col, collect_list, array_join, explode, collect_set, lit, coalesce, array, count, slice, rank, udf # <-- udf AGGIUNTO
+from pyspark.sql.functions import col, collect_list, array_join, explode, collect_set, lit, coalesce, array, count, slice, rank, udf
 from pyspark.sql.window import Window
 from pyspark.sql.types import ArrayType, StringType 
 
@@ -14,7 +14,7 @@ from awsglue.dynamicframe import DynamicFrame
 from awsglue.job import Job
 
 ##### FROM FILES
-tedx_dataset_path = "s3://tedx-2025-data-mp-provaprova/final_list.csv" # Il tuo CSV con la colonna 'slug'
+tedx_dataset_path = "s3://tedx-2025-data-mp-provaprova/final_list.csv"
 
 ###### READ PARAMETERS
 args = getResolvedOptions(sys.argv, ['JOB_NAME'])
@@ -53,7 +53,7 @@ query Transcript($id: ID!, $language: String!) {
 }
 """
 
-# --- MODIFICA 1: Cambia la lingua di default a "en" ---
+# Cambia la lingua di default a "en" ---
 def fetch_transcript_for_talk(talk_slug, language="en"): # Default alla lingua inglese
     if not talk_slug:
         return None
@@ -130,7 +130,7 @@ tedx_dataset = spark.read \
 
 if 'slug' in tedx_dataset.columns:
     print("Colonna 'slug' trovata. Recupero delle trascrizioni in INGLESE in corso...")
-    # --- MODIFICA 2: La chiamata UDF userà automaticamente language="en" come da definizione della funzione ---
+    # La chiamata UDF userà automaticamente language="en" come da definizione della funzione ---
     tedx_dataset = tedx_dataset.withColumn("transcript", get_transcript_udf(col("slug")))
     # Aggiungiamo la colonna transcript_language per chiarezza, sarà sempre "en" se la trascrizione è trovata
     from pyspark.sql.functions import when
@@ -277,7 +277,6 @@ if tedx_final_dataset is not None:
     else:
         tedx_final_dataset = tedx_final_dataset.withColumn("transcript", coalesce(col("transcript"), lit(None).cast(StringType())))
     
-    # --- MODIFICA 3: Assicurati che anche transcript_language sia gestito ---
     if "transcript_language" not in tedx_final_dataset.columns:
         print("Attenzione: colonna 'transcript_language' mancante nel dataset finale. Aggiunta come colonna vuota.")
         tedx_final_dataset = tedx_final_dataset.withColumn("transcript_language", lit(None).cast(StringType()))
