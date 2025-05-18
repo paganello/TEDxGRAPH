@@ -7,11 +7,6 @@ from neo4j import GraphDatabase, basic_auth, exceptions as neo4j_exceptions # Im
 from urllib.parse import quote_plus
 import traceback # Import per stack trace
 
-# --- Configuration from Environment Variables ---
-# CREDENZIALI DA AGGIUNGERE A MANO
-# Queste variabili devono essere impostate nell'ambiente di esecuzione del job Glue
-# Puoi usare AWS Glue Job Parameters o AWS Secrets Manager per gestire le credenziali in modo sicuro
-
 # Credenziali da configurare tramite ambiente o secret manager
 MONGO_USER = "[inserire il proprio username MongoDB]"
 MONGO_PASSWORD = "[inserire la propria password MongoDB]"
