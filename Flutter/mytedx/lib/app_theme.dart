@@ -102,11 +102,11 @@ class AppTheme {
         labelStyle: GoogleFonts.lato(color: accentColor),
         hintStyle: GoogleFonts.lato(color: accentColor.withOpacity(0.7)),
       ),
-      cardTheme: CardTheme(
+      cardTheme: CardThemeData(
         elevation: 1,
         margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 0),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
-        color: surfaceColor,
+        color: surfaceColor, // deve essere una variabile, non const
       ),
       listTileTheme: ListTileThemeData(
         iconColor: primaryColor,
