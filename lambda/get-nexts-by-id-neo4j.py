@@ -27,7 +27,9 @@ def get_neo4j_driver():
 def get_connected_nodes(tx, node_id_param):
     query = (
         "MATCH (startNode {id: $node_id_param})-->(connectedNode) "
-        "RETURN connectedNode.title AS title, "
+        "RETURN connectedNode.id AS id, "
+        "       connectedNode.url AS url, "
+        "       connectedNode.title AS title, "
         "       connectedNode.speakers AS speakers, "
         "       connectedNode.description AS description"
     )
@@ -36,7 +38,9 @@ def get_connected_nodes(tx, node_id_param):
     nodes_data = []
     for record in result:
         nodes_data.append({
+            "id": record["id"],
             "title": record["title"],
+            "url": record["url"],
             "speakers": record["speakers"], # Assumendo sia una lista o una stringa
             "description": record["description"]
         })
