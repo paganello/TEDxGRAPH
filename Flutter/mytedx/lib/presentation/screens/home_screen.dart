@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:mytedx/data/models/talk.dart';
 import 'package:mytedx/navigation/app_router.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mytedx/presentation/providers/talk_providers.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
   const HomeScreen({super.key});
@@ -28,12 +30,24 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     }
   }
 
+  void _searchByRandomTag() async {
+    try {
+      final talkApiService = ref.watch(talkApiServiceProvider);
+      final randomTag = await talkApiService.getRandomTag();
+      context.push('${AppRouter.talksByTagRoute}/$randomTag');
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text('Error fetching random tag: $e')));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MyTEDx Explorer'),
+        title: const Text('TEDxGRAPH'),
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
@@ -97,6 +111,50 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     ),
                   ),
                 ),
+                const SizedBox(height: 32),
+                Text('Talks you may like', style: theme.textTheme.titleLarge),
+                const SizedBox(height: 12),
+
+                ref
+                    .watch(randomTagTalksProvider)
+                    .when(
+                      data: (data) {
+                        final tag = data['tag'] as String;
+                        final talks = data['talks'] as List<Talk>;
+
+                        return Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              'Tag: $tag',
+                              style: theme.textTheme.labelLarge,
+                            ),
+                            const SizedBox(height: 12),
+                            ListView.builder(
+                              shrinkWrap: true,
+                              physics: const NeverScrollableScrollPhysics(),
+                              itemCount: talks.length,
+                              itemBuilder: (context, index) {
+                                final talk = talks[index];
+                                return Card(
+                                  child: ListTile(
+                                    title: Text(talk.title),
+                                    subtitle: Text(talk.mainSpeaker),
+                                    onTap: () {
+                                      // Naviga o mostra dettagli
+                                    },
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        );
+                      },
+                      loading:
+                          () =>
+                              const Center(child: CircularProgressIndicator()),
+                      error: (err, stack) => Text('Error loading talks: $err'),
+                    ),
               ],
             ),
           ),

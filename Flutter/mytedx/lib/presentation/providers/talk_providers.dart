@@ -10,6 +10,13 @@ final talkApiServiceProvider = Provider<TalkApiService>(
   (ref) => TalkApiService(),
 );
 
+final randomTagTalksProvider = FutureProvider.autoDispose((ref) async {
+  final api = ref.watch(talkApiServiceProvider);
+  final tag = await api.getRandomTag();
+  final talks = await api.getTalksByTag(tag, 1);
+  return {'tag': tag, 'talks': talks};
+});
+
 // Provider per la lista dei talk per tag (con paginazione)
 final talksByTagProvider = StateNotifierProvider.family<
   TalksByTagNotifier,
