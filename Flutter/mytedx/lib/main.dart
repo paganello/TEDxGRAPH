@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp.router(
       title: 'MyTEDx App',
-      theme: AppTheme.lightTheme,
+      theme: AppTheme.darkTheme,
       // darkTheme: AppTheme.darkTheme, // Se implementato
       // themeMode: ThemeMode.system,
       debugShowCheckedModeBanner: false,

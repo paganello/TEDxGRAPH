@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:math';
 import 'package:http/http.dart' as http;
 import 'package:mytedx/core/constants/api_constants.dart';
 import 'package:mytedx/data/models/talk.dart';
@@ -10,6 +11,49 @@ class TalkApiService {
   final http.Client _client;
 
   TalkApiService({http.Client? client}) : _client = client ?? http.Client();
+
+  Future<List<String>> getAvailableTags() async {
+    final url = Uri.parse(ApiConstants.getAvailableTags);
+    try {
+      final response = await _client.get(
+        url,
+        headers: {'Accept': 'application/json'},
+      );
+
+      if (response.statusCode == 200) {
+        final List<dynamic> jsonList = json.decode(
+          utf8.decode(response.bodyBytes),
+        );
+        return List<String>.from(jsonList);
+      } else {
+        print('Failed to load tags: ${response.statusCode} ${response.body}');
+        throw Exception('Failed to load tags. Status: ${response.statusCode}');
+      }
+    } catch (e) {
+      print('Error in getAvailableTags: $e');
+      throw Exception('Network error or server issue: $e');
+    }
+  }
+
+  Future<String> getRandomTag() async {
+    try {
+      final tags = await getAvailableTags();
+
+      if (tags.isEmpty) {
+        throw Exception('No tags available.');
+      }
+
+      final random = Random();
+      final randomTag = tags[random.nextInt(tags.length)];
+
+      print('Random tag selected: $randomTag');
+
+      return randomTag;
+    } catch (e) {
+      print('Error in getRandomTag: $e');
+      throw Exception('Could not fetch a random tag: $e');
+    }
+  }
 
   Future<List<Talk>> getTalksByTag(String tag, int page) async {
     final url = Uri.parse(ApiConstants.getTalksByTagEndpoint);

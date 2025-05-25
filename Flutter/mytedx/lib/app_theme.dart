@@ -127,6 +127,127 @@ class AppTheme {
     );
   }
 
-  // Puoi definire un tema scuro se vuoi
-  // static ThemeData get darkTheme { ... }
+  static ThemeData get darkTheme {
+    const Color primaryColor = Color.fromARGB(255, 255, 0, 0); // Azzurro acceso
+    const Color backgroundColor = Color(0xFF0F1722); // Sfondo scuro principale
+    const Color surfaceColor = Color(0xFF1D2A39); // Box e card
+    const Color onPrimaryColor = Colors.white;
+    const Color onBackgroundColor = Colors.white;
+    const Color onSurfaceColor = Color(0xFFCBD5E1); // Testo grigio chiarissimo
+    const Color secondaryTextColor = Color(0xFF9CA3AF);
+    const Color errorColor = Color(0xFFD32F2F);
+
+    return ThemeData(
+      useMaterial3: true,
+      brightness: Brightness.dark,
+      primaryColor: primaryColor,
+      scaffoldBackgroundColor: backgroundColor,
+      colorScheme: const ColorScheme(
+        brightness: Brightness.dark,
+        primary: primaryColor,
+        onPrimary: onPrimaryColor,
+        secondary: Color.fromARGB(255, 171, 171, 171),
+        onSecondary: onPrimaryColor,
+        error: errorColor,
+        onError: Colors.white,
+        surface: surfaceColor,
+        onSurface: onSurfaceColor,
+      ),
+      textTheme: GoogleFonts.latoTextTheme(ThemeData.dark().textTheme).copyWith(
+        displayLarge: GoogleFonts.montserrat(
+          fontSize: 28,
+          fontWeight: FontWeight.bold,
+          color: onBackgroundColor,
+        ),
+        displayMedium: GoogleFonts.montserrat(
+          fontSize: 24,
+          fontWeight: FontWeight.bold,
+          color: onBackgroundColor,
+        ),
+        headlineMedium: GoogleFonts.montserrat(
+          fontSize: 20,
+          fontWeight: FontWeight.w600,
+          color: onBackgroundColor,
+        ),
+        titleLarge: GoogleFonts.lato(
+          fontSize: 18,
+          fontWeight: FontWeight.bold,
+          color: onBackgroundColor,
+        ),
+        titleMedium: GoogleFonts.lato(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: secondaryTextColor,
+        ),
+        bodyLarge: GoogleFonts.lato(fontSize: 16, color: onSurfaceColor),
+        bodyMedium: GoogleFonts.lato(fontSize: 14, color: onSurfaceColor),
+        labelLarge: GoogleFonts.lato(
+          fontSize: 16,
+          fontWeight: FontWeight.bold,
+          color: onPrimaryColor,
+        ),
+      ),
+      appBarTheme: AppBarTheme(
+        backgroundColor: surfaceColor,
+        foregroundColor: onPrimaryColor,
+        elevation: 2,
+        titleTextStyle: GoogleFonts.montserrat(
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+          color: onPrimaryColor,
+        ),
+      ),
+      elevatedButtonTheme: ElevatedButtonThemeData(
+        style: ElevatedButton.styleFrom(
+          backgroundColor: primaryColor,
+          foregroundColor: onPrimaryColor,
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+          textStyle: GoogleFonts.lato(
+            fontSize: 16,
+            fontWeight: FontWeight.bold,
+          ),
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        ),
+      ),
+      inputDecorationTheme: InputDecorationTheme(
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: onSurfaceColor),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(8),
+          borderSide: BorderSide(color: primaryColor, width: 2),
+        ),
+        labelStyle: TextStyle(color: secondaryTextColor),
+        hintStyle: TextStyle(color: secondaryTextColor.withOpacity(0.7)),
+      ),
+      cardTheme: CardThemeData(
+        color: surfaceColor,
+        elevation: 2,
+        margin: const EdgeInsets.all(12),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+      ),
+      iconTheme: const IconThemeData(color: onSurfaceColor),
+      listTileTheme: ListTileThemeData(
+        iconColor: primaryColor,
+        textColor: onSurfaceColor,
+        titleTextStyle: GoogleFonts.lato(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+          color: onSurfaceColor,
+        ),
+        subtitleTextStyle: GoogleFonts.lato(
+          fontSize: 14,
+          color: secondaryTextColor,
+        ),
+      ),
+      floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        backgroundColor: primaryColor,
+        foregroundColor: onPrimaryColor,
+      ),
+      progressIndicatorTheme: const ProgressIndicatorThemeData(
+        color: primaryColor,
+      ),
+    );
+  }
 }
