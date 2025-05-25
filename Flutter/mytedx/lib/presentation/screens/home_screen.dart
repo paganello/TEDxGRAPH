@@ -133,7 +133,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ListView.builder(
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
-                              itemCount: talks.length,
+                              itemCount: talks.length > 8 ? 8 : talks.length,
                               itemBuilder: (context, index) {
                                 final talk = talks[index];
                                 return Card(
