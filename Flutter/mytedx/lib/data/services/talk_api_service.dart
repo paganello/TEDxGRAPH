@@ -18,9 +18,7 @@ class TalkApiService {
         url,
         headers: {'Content-Type': 'application/json'},
         body: jsonEncode({
-          'tag': tag,
-          'page': page,
-          'doc_per_page': ApiConstants.talksPerPage,
+          'tags': tag,
         }),
       );
 

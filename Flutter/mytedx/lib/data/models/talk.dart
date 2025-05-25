@@ -36,8 +36,6 @@ class Talk {
     // Il tuo modello originale non aveva un campo ID, che è cruciale.
 
     String determineId(Map<String, dynamic> json) {
-      if (json.containsKey('_id') && json['_id'] != null)
-        return json['_id'].toString();
       if (json.containsKey('id') && json['id'] != null)
         return json['id'].toString();
       // Se nessun ID è presente, potrebbe essere un problema.

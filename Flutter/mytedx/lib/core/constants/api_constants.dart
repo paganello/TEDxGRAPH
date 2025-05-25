@@ -1,6 +1,6 @@
 class ApiConstants {
   static const String getTalksByTagEndpoint =
-      'https://819abdgsql.execute-api.us-east-1.amazonaws.com/default/Get_Talks_By_ID'; // Assumi un path come /get-talks-by-tag
+      'https://q5c249sacb.execute-api.us-east-1.amazonaws.com/default/get-talks-by-tags'; // Assumi un path come /get-talks-by-tag
 
   static const String getTalkSummaryEndpoint =
       'https://wk1odd3mde.execute-api.us-east-1.amazonaws.com/default/ai-api-agent'; // Assumi un path come /get-talk-summary
