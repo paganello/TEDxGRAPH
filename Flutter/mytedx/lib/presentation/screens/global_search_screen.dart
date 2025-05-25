@@ -115,12 +115,12 @@ class _GlobalSearchScreenState extends ConsumerState<GlobalSearchScreen> {
                                 final partialTalk = Talk(
                                   id: searchedTalk.id,
                                   title: searchedTalk.title,
-                                  details: 'Loading details...', // Placeholder
+                                  details: searchedTalk.details, // Placeholder
                                   slug:
                                       searchedTalk
                                           .id, // Usa id come slug se non disponibile altrimenti
                                   mainSpeaker:
-                                      'Loading speaker...', // Placeholder
+                                      searchedTalk.mainSpeaker,
                                   url: '',
                                 );
                                 context.push(
